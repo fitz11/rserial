@@ -33,7 +33,7 @@ pub const SYNC_STATUS_COLOR: Color = Color::Cyan;
 
 // --- Graph View ---
 
-pub const GRAPH_BUFFER_SIZE: usize = 30;
+pub const GRAPH_BUFFER_SIZE: usize = 500;
 
 // --- Theming ---
 
