@@ -78,6 +78,10 @@ impl HelpPopup {
                 Span::styled("  Export all buffers", label),
             ]),
             Line::from(vec![
+                Span::styled("  y", key),
+                Span::styled("  Lock/unlock Y-axis", label),
+            ]),
+            Line::from(vec![
                 Span::styled("  x", key),
                 Span::styled("  Disconnect", label),
             ]),

@@ -89,6 +89,30 @@ impl App {
                         (KeyCode::Char('L'), _) => {
                             self.export_all();
                         }
+                        (KeyCode::Char('y'), _) => {
+                            if self.view.graph_y_locked.is_some() {
+                                self.view.graph_y_locked = None;
+                                self.view.set_status("Y-axis auto".into());
+                            } else {
+                                let data: Vec<f64> =
+                                    self.messages.graph_float.iter().copied().collect();
+                                if !data.is_empty() {
+                                    let min =
+                                        data.iter().copied().fold(f64::INFINITY, f64::min);
+                                    let max =
+                                        data.iter().copied().fold(f64::NEG_INFINITY, f64::max);
+                                    let range = max - min;
+                                    let padding = if range.abs() < f64::EPSILON {
+                                        1.0
+                                    } else {
+                                        range * 0.1
+                                    };
+                                    self.view.graph_y_locked =
+                                        Some((min - padding, max + padding));
+                                    self.view.set_status("Y-axis locked".into());
+                                }
+                            }
+                        }
                         (KeyCode::Char('x'), _) => {
                             return Ok(AppExit::ManualDisconnect);
                         }

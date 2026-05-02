@@ -55,7 +55,10 @@ impl App {
             MessageView::Graphs => {
                 let float_data: Vec<f64> = self.messages.graph_float.iter().copied().collect();
                 let int_data: Vec<i64> = self.messages.graph_int.iter().copied().collect();
-                frame.render_widget(GraphView::new(&float_data, &int_data), message_area);
+                frame.render_widget(
+                    GraphView::new(&float_data, &int_data, self.view.graph_y_locked),
+                    message_area,
+                );
             }
             _ => {
                 let (messages, title, border_color) = match self.view.current_view {

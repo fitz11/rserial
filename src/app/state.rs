@@ -121,6 +121,7 @@ pub(super) struct ViewState {
     pub(super) receiving: bool,
     pub(super) list_state: ListState,
     pub(super) status_message: Option<(String, Instant)>,
+    pub(super) graph_y_locked: Option<(f64, f64)>,
 }
 
 impl ViewState {
@@ -132,6 +133,7 @@ impl ViewState {
             receiving: true,
             list_state: ListState::default(),
             status_message: None,
+            graph_y_locked: None,
         }
     }
 
